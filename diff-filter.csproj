@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{46336A4D-A37D-4923-A5BB-C789F135D9D1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>diff_filter</RootNamespace>
-    <AssemblyName>diff_filter</AssemblyName>
+    <RootNamespace>DiffFilter</RootNamespace>
+    <AssemblyName>diff-filter</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>diff_filter.Program</StartupObject>
+    <StartupObject>DiffFilter.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommandLine, Version=2.4.3.0, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
