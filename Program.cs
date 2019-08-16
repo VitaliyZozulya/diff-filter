@@ -2,15 +2,18 @@
 using System.Text.RegularExpressions;
 using CommandLine;
 
-namespace diff_filter
+namespace DiffFilter
 {
     public class Arguments
     {
-        [Option('i', Required = true, HelpText = "Input diff file")]
+        [Option('s', Required = true, HelpText = "Input diff file.")]
         public string InputFile { get; set; }
 
-        [Option('o', Required = true, HelpText = "Output diff file.")]
+        [Option('d', Required = true, HelpText = "Output diff file.")]
         public string OutputFile { get; set; }
+
+        [Option('i', Required = false, Default = false, HelpText = "Inverse mode.")]
+        public bool IsInversed { get; set; }
 
         [Option('r', Required = true, HelpText = "Hunk regex pattern.")]
         public string RegexPattern { get; set; }
@@ -48,7 +51,14 @@ namespace diff_filter
                             foreach (Match hunk in hunks)
                             {
                                 Match hunkMatch = Regex.Match(hunk.Groups[1].Value, args.RegexPattern, RegexOptions.Multiline);
-                                if (hunkMatch.Success)
+
+                                bool result = hunkMatch.Success;
+                                if (args.IsInversed)
+                                {
+                                    result = !result;
+                                }
+
+                                if (result)
                                 {
                                     if (!isHeaderWritten)
                                     {
